@@ -14,15 +14,15 @@ function CreateorUpdateProduct(props) {
   const [categoryList, setcategoryList] = useState([]);
   const [statusList, setstatusList] = useState([]);
   const getdata=async () => {
-    let urlmanufacturerList = UrlConstant.Ip + UrlConstant.manufacturerList
-    let urlcategoryList = UrlConstant.Ip + UrlConstant.categoryList
-    let urlstatusList = UrlConstant.Ip + UrlConstant.statusList
+    let urlmanufacturerList = UrlConstant.Ip + UrlConstant.Manufacturer.manufacturer
+    // let urlcategoryList = UrlConstant.Ip + UrlConstant.categoryList
+    // let urlstatusList = UrlConstant.Ip + UrlConstant.statusList
     setmanufacturerList(await HTTPService(urlmanufacturerList, 'get', ''))
-    setcategoryList(await HTTPService(urlcategoryList, 'get', ''))
-    setstatusList(await HTTPService(urlstatusList, 'get', ''))
+    // setcategoryList(await HTTPService(urlcategoryList, 'get', ''))
+    // setstatusList(await HTTPService(urlstatusList, 'get', ''))
   }
   useEffect( () => {
-    // getdata()
+    getdata()
   }, []);
   return (
     <React.Fragment>
@@ -32,7 +32,7 @@ function CreateorUpdateProduct(props) {
             <InputElement mandatory={true} type={'text'} inputChangeHandler={(e) => props.setProductFormData(e,'name')} label={'Name'} inputValue={props.productform.name} inputPlaceHolder={'name'} disable={props.disableUserId}></InputElement>
           </Col>
           <Col md={4} lg={4} sm={6} xs={6}>
-            <SelectElement mandatory={true} selectChangeHandler={(e) =>  props.setProductFormData(e,'manufacturer')} label={'Manufacturer'} inputValue={props.productform.manufacturer} dropdownList={manufacturerList}></SelectElement>
+            <SelectElement mandatory={true} selectChangeHandler={(e) =>  props.setProductFormData(e,'manufacturer_id')} label={'Manufacturer'} inputValue={props.productform.manufacturer_id} dropdownList={manufacturerList}></SelectElement>
           </Col>
           <Col md={4} lg={4} sm={6} xs={6}>
             <SelectElement mandatory={true} selectChangeHandler={(e) => props.setProductFormData(e,'category')} label={'Category'} inputValue={props.productform.category} dropdownList={categoryList}></SelectElement>
@@ -47,13 +47,10 @@ function CreateorUpdateProduct(props) {
           <Col md={4} lg={4} sm={6} xs={6}>
             <InputElement  mandatory={true} type={'text'} inputChangeHandler={(e) => props.setProductFormData(e,'sku')} label={'SKU'} inputValue={props.productform.sku} inputPlaceHolder={'SKU'}></InputElement>
           </Col>
-          <Col md={4} lg={4} sm={6} xs={6}>
+          {/* <Col md={4} lg={4} sm={6} xs={6}>
             <SelectElement mandatory={true} selectChangeHandler={(e) => props.setProductFormData(e,'status')} label={'Status'} inputValue={props.productform.status} dropdownList={statusList}></SelectElement>
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col md={4} lg={4} sm={6} xs={6}>
+          </Col> */}
+            <Col md={4} lg={4} sm={6} xs={6}>
             <InputElement mandatory={false} type={'text'} inputChangeHandler={(e) => props.setProductFormData(e,'description')} label={'Description'} inputValue={props.productform.description} inputPlaceHolder={'Description'}></InputElement>
           </Col>
         </Row>

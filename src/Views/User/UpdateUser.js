@@ -3,27 +3,26 @@ import HTTPService from '../../Services/HTTPService';
 import {UrlConstant,localstorageConstants} from '../../Constants/Constants';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import InputElement from '../../Components/FormElements/inputElement'
 import User from '../../Components/CreateorUpdateuser/CreateorUpdateUser'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import {Link} from 'react-router-dom';
 
 function Updateuser(props) {
-  const [userform, setuserform] = useState({userId:'',name:'',role:'',department:'',contactNumber:'',email:'',displayname:''});
+  const [userform, setuserform] = useState({userCode:'',name:'',type: "ADMIN",department:'',contactNumber:'',email:'',displayName:'',password:''});
   const setUserFormData = async (e,field) => {
     let formObject= Object.assign({}, userform);
     formObject[field]=e.target.value;
     setuserform({...userform,...formObject})
   }
-  const UpdateUser = async () => {
-    let url = UrlConstant.Ip + UrlConstant.createUser
-  let data= await HTTPService(url, 'post', userform)
+  const UpdateUserData = async () => {
+    let url = UrlConstant.Ip + UrlConstant.User.user+"/"+props.match.params.id
+  let data= await HTTPService(url, 'PUT', userform)
+  props.history.push("/admin/users")
   }
   const getdata=async () => {
-    let urlUserList = UrlConstant.Ip + UrlConstant.userList
-    let data =await HTTPService(urlUserList, 'get','')
-    setuserform({...userform,...data[0]})
+    let url = UrlConstant.Ip + UrlConstant.User.user+"/"+props.match.params.id
+    let data =await HTTPService(url, 'get','')
+    setuserform({...userform,...data})
   }
   useEffect( () => {
     getdata()
@@ -45,7 +44,7 @@ function Updateuser(props) {
         <Row>
         <Col md={6} lg={6} sm={6} xs={6}>
             <br />
-            <Button variant="primary" onClick={Updateuser} size="md" disabled={!(userform.userId&&userform.role&&userform.department&&userform.displayname)}>Update</Button>&nbsp;&nbsp;&nbsp;
+            <Button variant="primary" onClick={UpdateUserData} size="md" disabled={!(userform.userCode&&userform.displayName&&userform.password)}>Update</Button>&nbsp;&nbsp;&nbsp;
             <Button variant="secondary" onClick={()=>props.history.push("/admin/users")} size="md" >Cancel</Button> 
           </Col>
         </Row>

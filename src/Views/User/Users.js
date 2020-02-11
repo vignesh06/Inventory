@@ -14,7 +14,7 @@ function Users(props) {
   const [UsersList, setUsersList] = useState([]);
   const [tableConfig, settableConfig] = useState([]);
   const getProductList = async () => {
-    let url = UrlConstant.Ip + UrlConstant.userList
+    let url = UrlConstant.Ip + UrlConstant.User.user
     setUsersList(await HTTPService(url, 'get',''))
     let tabelColumnn = [
         { title: 'Name', field: 'name' },
@@ -27,7 +27,7 @@ function Users(props) {
       settableConfig(tabelColumnn)
   }
   const rowClick=(data)=>{
-    let id=data.userId;
+    let id=data.id;
     props.history.push("/admin/user/"+id)
   }
   useEffect( () => {

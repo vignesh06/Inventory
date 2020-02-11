@@ -10,10 +10,10 @@ const SelectElement = props => {
             value={props.inputValue}
           >
             <option selected disabled value=''>---Please select---</option>
-            {props.dropdownList.map((name, i) => {
+            {props.dropdownList.map((data, i) => {
               return (
-                <option value={name} key={i}>
-                  {name}
+                <option value={data.id} key={i}>
+                  {data.name}
                 </option>
               );
             })}

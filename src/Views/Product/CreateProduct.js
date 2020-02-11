@@ -10,15 +10,15 @@ import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom';
 
 function CreateProduct(props) {
-  const [productform, setproductform] = useState({name:'',manufacturer:'',category:'',hsnCode:'',sku:'',status:'',description:''});
+  const [productform, setproductform] = useState({name:'',manufacturer_id:'',category:'',hsnCode:'',sku:'',status:'',description:''});
   const setProductFormData = async (e,field) => {
     let formObject= Object.assign({}, productform);
     formObject[field]=e.target.value;
     setproductform({...productform,...formObject})
   }
-  const CreateUser = async () => {
-  //   let url = UrlConstant.Ip + UrlConstant.createProduct
-  // let data= await HTTPService(url, 'post', productform)
+  const CreateProduct = async () => {
+    let url = UrlConstant.Ip + UrlConstant.Product.product
+  let data= await HTTPService(url, 'post', productform)
   props.history.push("/admin/products")
   }
   return (
@@ -39,7 +39,7 @@ function CreateProduct(props) {
         <Col md={6} lg={6} sm={6} xs={6}>
             <br />
             {/* <Button variant="primary" onClick={CreateUser} size="md" disabled={!(productform.name&&productform.manufacturer&&productform.category&&productform.hsnCode&&productform.status&&productform.sku)}>Create</Button>&nbsp;&nbsp;&nbsp; */}
-            <Button variant="primary" onClick={CreateUser} size="md" >Create</Button>&nbsp;&nbsp;&nbsp;
+            <Button variant="primary" onClick={CreateProduct} size="md" disabled={!(productform.name&&productform.manufacturer_id)} >Create</Button>&nbsp;&nbsp;&nbsp;
             <Button variant="secondary" onClick={()=>props.history.push("/admin/products")} size="md" >Cancel</Button> 
           </Col>
         </Row>

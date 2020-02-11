@@ -34,6 +34,16 @@ const Navbar = props => {
                Products
             </Link>
           </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/admin/locations'>
+               Locations
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/admin/manufacturers'>
+               Manufacturers
+            </Link>
+          </li>
           {/* <li className='nav-item'>
             <Link className='nav-link' to='/admin/createproduct'>
               Create Product

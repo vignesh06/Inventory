@@ -1,5 +1,6 @@
 export const UrlConstant = {
-    Ip: "http://demo1571331.mockable.io/",
+    Ip2: "http://demo1571331.mockable.io/",
+    Ip: "http://1a811cf9.ngrok.io/api/1/ims/",
     tableData:"getTableData",
     filterData:"filterData",
     getroleList:"roleList",
@@ -11,6 +12,18 @@ export const UrlConstant = {
     createProduct:"createProduct",
     productList:"productList",
     userList:"userList",
+    User:{
+          user:"users"
+    },
+    Location:{
+        location:"locations"
+    },
+    Manufacturer:{
+        manufacturer:"manufacturers"
+    },
+    Product:{
+        product:"products"
+    },
     login:"login"
     
 };

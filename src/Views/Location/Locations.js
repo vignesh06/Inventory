@@ -10,27 +10,21 @@ import Button from 'react-bootstrap/Button'
 import {Link} from 'react-router-dom';
 import CustomTable from '../../Components/Table/CustomTable';
 
-function Products(props) {
-  const [productList, setproductList] = useState([]);
+function Locations(props) {
+  const [LocationList, setLocationList] = useState([]);
   const [tableConfig, settableConfig] = useState([]);
   const getProductList = async () => {
-    let url = UrlConstant.Ip + UrlConstant.Product.product
-    setproductList(await HTTPService(url, 'get',''))
+    let url = UrlConstant.Ip + UrlConstant.Location.location
+    setLocationList(await HTTPService(url, 'get',''))
     let tabelColumnn = [
-        { title: 'Name', field: 'name' },
-        { title: 'HSN Code', field: 'hsnCode' },
-        { title: 'Category', field: 'category' },
-        { title: 'Type', field: 'type' },
-        { title: 'SKU', field: 'sku' },
-        { title: 'Status', field: 'status' },
+        { title: 'Name', field: 'type' },
         { title: 'Description', field: 'description' },
-        // { title: 'Manufacturer', field: 'manufacturer' },
       ]
       settableConfig(tabelColumnn)
   }
   const rowClick=(data)=>{
     let id=data.id;
-    props.history.push("/admin/product/"+id)
+    props.history.push("/admin/location/"+id)
   }
   useEffect( () => {
     getProductList()
@@ -40,17 +34,17 @@ function Products(props) {
       <Container>
         <br />  <Row>
           <Col md={12} lg={12} sm={12} xs={12}>
-            <span><h2>Products</h2> </span>             <span><Button variant="primary" style={{"float":"right"}} onClick={()=>props.history.push("/admin/createproduct")} size="md" >Create Product</Button></span>    &nbsp;&nbsp;&nbsp;
+            <span><h2>Locations</h2> </span>             <span><Button variant="primary" style={{"float":"right"}} onClick={()=>props.history.push("/admin/createlocation")} size="md" >Create Location</Button></span>    &nbsp;&nbsp;&nbsp;
 
           </Col>
         </Row>
         <br />
         <Row>
-          {productList.length > 0 ? <CustomTable columns={tableConfig} data={productList} rowClick={(data)=>rowClick(data)}></CustomTable> : ''}
+          {LocationList.length > 0 ? <CustomTable columns={tableConfig} data={LocationList} rowClick={(data)=>rowClick(data)}></CustomTable> : ''}
         </Row>
       </Container>
     </React.Fragment>
   );
 }
 
-export default Products;
+export default Locations;
