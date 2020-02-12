@@ -1,33 +1,28 @@
 export const UrlConstant = {
-    Ip2: "http://demo1571331.mockable.io/",
-    Ip: "http://1a811cf9.ngrok.io/api/1/ims/",
-    tableData:"getTableData",
-    filterData:"filterData",
-    getroleList:"roleList",
-    departmentList:"departmentList",
-    createUser:"departmentList",
-    manufacturerList:"manufacturerList",
-    categoryList:"categoryList",
-    statusList:"statusList",
-    createProduct:"createProduct",
-    productList:"productList",
-    userList:"userList",
-    User:{
-          user:"users"
+    Ip: "http://01e8d5a8.ngrok.io/api/v1/",
+    User: {
+        user: "users"
     },
-    Location:{
-        location:"locations"
+    Location: {
+        location: "locations"
     },
-    Manufacturer:{
-        manufacturer:"manufacturers"
+    Manufacturer: {
+        manufacturer: "manufacturers"
     },
-    Product:{
-        product:"products"
+    Product: {
+        product: "products"
     },
-    login:"login"
-    
+    Indent: {
+        indent: "indents"
+    },
+    login: "users/login"
 };
-export const localstorageConstants={
-    Token:"Token"
+
+export const localstorageConstants = {
+    Token: "Token"
+}
+
+export const dropDownConstants = {
+    IndentType: [{ id: "OUTGOING", name: "OUTGOING" }, { id: "INCOMING", name: "INCOMING" }]
 }
 

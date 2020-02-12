@@ -3,6 +3,7 @@ import Admin from './Layout/Admin'
 import Login from './Layout/Login'
 import ForgotPassword from './Layout/ForgotPassword'
 import signup from './Layout/Signup'
+import internalservererror from './ErrorPages/InternalServer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <Route exact path="/signup" component={signup} />
+        <Route exact path="/internal-server-error" component={internalservererror} />
         <Redirect from="/" to="/login" />
       </Switch>
     </Router>

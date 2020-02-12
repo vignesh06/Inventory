@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import HTTPService from '../Services/HTTPService';
-import {UrlConstant,localstorageConstants} from '../Constants/Constants';
+import { UrlConstant, localstorageConstants } from '../Constants/Constants';
 import labels from '../Constants/labels';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import InputElement from '../Components/FormElements/inputElement'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import {Link} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 function Login(props) {
   const [userName, setuserName] = useState();
   const [password, setpassword] = useState();
-  useEffect( () => {
+  useEffect(() => {
     logout()
   }, []);
-  const logout=()=>{
+  const logout = () => {
     localStorage.setItem(
       localstorageConstants.Token,
-     ""
+      ""
     )
-}
+  }
   const login = async () => {
-    // let url = Urls.Ip + Urls.login
-    // let data={"userName":userName,"password":password}
-    // let responsedata=await HTTPService(url, 'post',data)
+    let url = UrlConstant.Ip + UrlConstant.login
+    let data={"userName":userName,"password":password}
+    let responsedata=await HTTPService(url, 'post',data)
     localStorage.setItem(
-      localstorageConstants.Token,
-     "vdssdvdsvvsv"
+      localstorageConstants.Token,responsedata.jwt
     )
     props.history.push("/admin")
   }
@@ -45,7 +44,7 @@ function Login(props) {
           <Col md={4} lg={4} sm={6} xs={6}>
             <InputElement type={'text'} inputChangeHandler={(e) => setuserName(e.target.value)} label={''} inputValue={userName} inputPlaceHolder={'User name'}></InputElement>
           </Col>
-          
+
         </Row>
         <Row>
           <Col md={4} lg={4} sm={6} xs={6}>
@@ -53,9 +52,10 @@ function Login(props) {
           </Col>
         </Row>
         <Row>
-        <Col md={6} lg={6} sm={6} xs={6}>
+          <Col md={6} lg={6} sm={6} xs={6}>
             <br />
-            <Button variant="primary" onClick={login} size="md" disabled={!(userName&&password)}>{labels.login.lbl_Login_button}</Button> <br /> <br />
+            {/* <Button variant="primary" onClick={()=>props.login(userName,password)} size="md" disabled={!(userName && password)}>{labels.login.lbl_Login_button}</Button> <br /> <br /> */}
+            <Button variant="primary" onClick={()=>login()} size="md" disabled={!(userName && password)}>{labels.login.lbl_Login_button}</Button> <br /> <br />
             <p className="mb-2 text-muted">Forgot password? <Link to="/forgotpassword">Reset</Link></p> <br />
             <p className="mb-0 text-muted">Don’t have an account? <Link to="/signup">Signup</Link></p>
           </Col>
@@ -64,5 +64,4 @@ function Login(props) {
     </React.Fragment>
   );
 }
-
 export default Login;

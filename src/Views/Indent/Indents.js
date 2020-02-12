@@ -11,21 +11,23 @@ import { Link } from 'react-router-dom';
 import CustomTable from '../../Components/Table/CustomTable';
 import PageHeading from '../../Components/PageHeading/PageHeading';
 
-function Locations(props) {
-  const [LocationList, setLocationList] = useState([]);
+function Indents(props) {
+  const [indentList, setindentList] = useState([]);
   const [tableConfig, settableConfig] = useState([]);
   const getProductList = async () => {
-    let url = UrlConstant.Ip + UrlConstant.Location.location
-    setLocationList(await HTTPService(url, 'get', ''))
+    let url = UrlConstant.Ip + UrlConstant.Indent.indent
+    setindentList(await HTTPService(url, 'get', ''))
     let tabelColumnn = [
-      { title: 'Name', field: 'type' },
-      { title: 'Description', field: 'description' },
+      { title: 'Type', field: 'type' },
+      { title: 'Remarks', field: 'remarks' },
+      { title: 'Status', field: 'status' },
+      { title: 'Delivery Date', field: 'deliveryDate' },
     ]
     settableConfig(tabelColumnn)
   }
   const rowClick = (data) => {
     let id = data.id;
-    props.history.push("/admin/location/" + id)
+    props.history.push("/admin/indent/" + id)
   }
   useEffect(() => {
     getProductList()
@@ -33,20 +35,18 @@ function Locations(props) {
   return (
     <React.Fragment>
       <Container>
-        <PageHeading heading={'Locations'} />
+        <PageHeading heading={'Indents'} />
         <Row>
           <Col md={12} lg={12} sm={12} xs={12}>
-            <span><Button variant="primary" style={{ "float": "right" }} onClick={() => props.history.push("/admin/createlocation")} size="md" >Create Location</Button></span>    &nbsp;&nbsp;&nbsp;
-
+            <span><Button variant="primary" style={{ "float": "right" }} onClick={() => props.history.push("/admin/createindent")} size="md" >Create indent</Button></span>    &nbsp;&nbsp;&nbsp;
           </Col>
-        </Row>
-        <br />
+        </Row> <br />
         <Row>
-          {LocationList.length > 0 ? <CustomTable columns={tableConfig} data={LocationList} rowClick={(data) => rowClick(data)}></CustomTable> : ''}
+          {indentList.length > 0 ? <CustomTable columns={tableConfig} data={indentList} rowClick={(data) => rowClick(data)}></CustomTable> : ''}
         </Row>
       </Container>
     </React.Fragment>
   );
 }
 
-export default Locations;
+export default Indents;

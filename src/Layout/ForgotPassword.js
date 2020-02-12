@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import HTTPService from '../Services/HTTPService';
-import {UrlConstant,localstorageConstants} from '../Constants/Constants';
+import { UrlConstant, localstorageConstants } from '../Constants/Constants';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import InputElement from '../Components/FormElements/inputElement'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ForgotPassword() {
   const [userName, setuserName] = useState();
@@ -29,7 +29,7 @@ function ForgotPassword() {
           <Col md={4} lg={4} sm={6} xs={6}>
             <InputElement type={'text'} inputChangeHandler={(e) => setuserName(e.target.value)} label={''} inputValue={userName} inputPlaceHolder={'User name'}></InputElement>
           </Col>
-          
+
         </Row>
         <Row>
           <Col md={4} lg={4} sm={6} xs={6}>
@@ -42,9 +42,9 @@ function ForgotPassword() {
           </Col>
         </Row>
         <Row>
-        <Col md={6} lg={6} sm={6} xs={6}>
+          <Col md={6} lg={6} sm={6} xs={6}>
             <br />
-            <Button variant="primary" onClick={login} size="md" disabled={!((userName&&password&&confirmPassword)&&(password==confirmPassword))}>Reset</Button>
+            <Button variant="primary" onClick={login} size="md" disabled={!((userName && password && confirmPassword) && (password == confirmPassword))}>Reset</Button>
             <br /> <br /><p className="mb-0 text-muted">Allready have an account? <Link to="/login">Login</Link></p>
           </Col>
         </Row>
