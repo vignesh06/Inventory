@@ -20,17 +20,6 @@ const HTTPService = async (url, method, data, token) => {
         window.location.href="/internal-server-error"
       }
     });
-
-  //   return result.data;
-  // } catch (error) {
-  //   alert(error);
-  //   console.log(error)
-  //   localStorage.setItem(
-  //     localstorageConstants.Token,
-  //     ""
-  //   )
-  //   window.location.href="/500"
-  // }
 };
 
 export default HTTPService
