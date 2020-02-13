@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { UrlConstant, localstorageConstants } from '../Constants/Constants';
 const HTTPService = async (url, method, data, token) => {
-  await axios({
+  let response=await axios({
       method,
       url,
       data,
@@ -11,8 +11,8 @@ const HTTPService = async (url, method, data, token) => {
     })
     .catch(function(apiError) {
          localStorage.setItem(
-      localstorageConstants.Token,
-      ""
+      localstorageConstants.IsLoggedIn,
+    false
     )
       if (apiError.status === 500) {
         window.location.href="/internal-server-error"
@@ -20,6 +20,7 @@ const HTTPService = async (url, method, data, token) => {
         window.location.href="/internal-server-error"
       }
     });
+    return response;
 };
 
 export default HTTPService

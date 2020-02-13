@@ -1,5 +1,5 @@
 export const UrlConstant = {
-    Ip: "http://01e8d5a8.ngrok.io/api/v1/",
+    Ip: "http://54cf2819.ngrok.io/api/1/ims/",
     User: {
         user: "users"
     },
@@ -19,7 +19,8 @@ export const UrlConstant = {
 };
 
 export const localstorageConstants = {
-    Token: "Token"
+    Token: "Token",
+    IsLoggedIn:"isLoggedIn"
 }
 
 export const dropDownConstants = {

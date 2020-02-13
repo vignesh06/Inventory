@@ -43,7 +43,7 @@ function Admin(props) {
   };
   const [islogin, setislogin] = useState(false);
   useEffect(() => {
-    if (localStorage.getItem(localstorageConstants.Token)) {
+    if (localStorage.getItem(localstorageConstants.IsLoggedIn)) {
       setislogin(true)
     } else {
       setislogin(false)

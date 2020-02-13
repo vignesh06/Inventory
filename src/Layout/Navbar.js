@@ -50,7 +50,7 @@ const Navbar = props => {
             </Link>
           </li>
         </ul>
-        <a className='navbar-brand' onClick={logout} style={{"margin-left": "45%","color": "white","cursor":"pointer" }}>
+        <a className='navbar-brand' onClick={logout} style={{"marginLeft": "45%","color": "white","cursor":"pointer" }}>
         Logout
         </a>
       </nav>
