@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { UrlConstant, localstorageConstants } from '../Constants/Constants';
-const HTTPService = async (url, method, data, token) => {
+const HTTPService = async (url, method, data) => {
   let response=await axios({
       method,
       url,

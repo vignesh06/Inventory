@@ -18,10 +18,10 @@ function Login(props) {
   }, []);
   const logout = () => {
     localStorage.setItem(
-      localstorageConstants.Token,
-      ""
-    )
+      localstorageConstants.IsLoggedIn,
+    false)
   }
+  //function to Login 
   const login = async () => {
     let url = UrlConstant.Ip + UrlConstant.login
     let data={"username":username,"password":password}
@@ -57,7 +57,6 @@ function Login(props) {
         <Row>
           <Col md={6} lg={6} sm={6} xs={6}>
             <br />
-            {/* <Button variant="primary" onClick={()=>props.login(userName,password)} size="md" disabled={!(userName && password)}>{labels.login.lbl_Login_button}</Button> <br /> <br /> */}
             <Button variant="primary" onClick={()=>login()} size="md" disabled={!(username && password)}>{labels.login.lbl_Login_button}</Button> <br /> <br />
             <p className="mb-2 text-muted">Forgot password? <Link to="/forgotpassword">Reset</Link></p> <br />
             <p className="mb-0 text-muted">Don’t have an account? <Link to="/signup">Signup</Link></p>
